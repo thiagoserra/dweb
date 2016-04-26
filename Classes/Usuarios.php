@@ -18,7 +18,7 @@ class Usuarios extends Crud {
 	protected $tabela = 'usuarios';
 	private $usuario;
 	private $senha;
-	private $idGrupoUsuario;
+	private $idGrupoUsuario = 1;
 
 	public function setUsuario($usuario){
 		$this->usuario = $usuario;
@@ -45,12 +45,12 @@ class Usuarios extends Crud {
 	}
 
 	public function inserir() {
-		$sql  = "INSERT INTO $this->table (usuario, senha, idgrupousuario) "
+		$sql  = "INSERT INTO $this->tabela (usuario, senha, idgrupousuario) "
 						." VALUES (:usuario, :senha, :idgrupousuario)";
 		$stmt = Bd::prepare($sql);
-		$stmt->bindParam(':usuario', $this->getUsuario());
-		$stmt->bindParam(':senha', $this->getSenha());
-		$stmt->bindParam(':idgrupousuario', $this->getIdGrupoUsuario());
+		$stmt->bindParam(':usuario', $this->usuario);
+		$stmt->bindParam(':senha', $this->senha);
+		$stmt->bindParam(':idgrupousuario', $this->idGrupoUsuario);
 		return $stmt->execute();
 	}
 
