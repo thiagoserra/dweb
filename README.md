@@ -18,8 +18,3 @@ Informações aos alunos
 1.  Lembre-se que é necessário alterar o arquivo config.inc.php para gravar as informações de acesso ao seu projeto.
 2.  Não enviar para o Git esse arquivo (config.inc.php)!
 3.  Se tiver dúvidas para baixar o projeto, dar um commit, incluir comentários.... leia: http://rogerdudler.github.io/git-guide/index.pt_BR.html
-
-
-
-
-
