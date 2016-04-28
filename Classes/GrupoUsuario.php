@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GrupoUsuario.php
  *
@@ -6,42 +7,51 @@
  * @author Thiago Serra F Carvalho <thiagoserra at protonmail.com>
  * @version 1.0
  */
-
 require_once 'Crud.php';
 
 /**
  *  Implementacao da classe GrupoUsuario
  *  @see Crud
  */
-  class GrupoUsuario extends Crud {
+class GrupoUsuario extends Crud {
+
     protected $tabela = 'gruposusuario';
     private $grupo;
-    private $idGrupoUsuario;
+    private $id;
 
+    public function setGrupo($grupo) {
+        $this->grupo = $grupo;
+    }
 
-  	public function setGrupo($grupo){
-  		$this->grupo = $grupo;
-  	}
+    public function getGrupo() {
+        return $this->grupo;
+    }
+    
+    function getId() {
+        return $this->id;
+    }
 
-  	public function getGrupo() {
-  		return $this->grupo;
-  	}
+    function setId($id) {
+        $this->id = $id;
+    }
 
-    public function inserir(){
-      return false;
+    public function inserir() {
+        return false;
     }
 
     public function atualizar($id) {
-      return false;
+        return false;
     }
 
-    public function montaSelectGrupo() {
-      foreach(self::selecionarTudo() as $key => $value) {
-        $tag = "<option value='".$value->id."'>";
-        $tag .= $value->grupo."</option>\n";
-      }
-      return $tag;
+    public function montaSelectGrupo($id = '') {       
+        $combo = "<select name=\"idgrupo\" class='form-control'>\n";
+        $combo .= "<option></option>\n";
+        foreach (self::selecionarTudo() as $key => $value ) {
+            (($value->id == $id) ? $select = " selected" : $select = "");
+            $combo .= "<option value='". $value->id ."'$select>".$value->grupo."</option>\n";
+        }
+        $combo .= "</select>\n";
+        return $combo;        
     }
 
-
-  }
+}

@@ -15,6 +15,6 @@
  * Constantes para uso na Classe BD
  */
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'numeracao');
-define('DB_USER', 'unumeracao');
+define('DB_NAME', 'dweb');
+define('DB_USER', 'udweb');
 define('DB_PASS', 'XAw3ruZu2C9M5cnB');
