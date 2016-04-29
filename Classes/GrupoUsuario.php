@@ -26,7 +26,7 @@ class GrupoUsuario extends Crud {
     public function getGrupo() {
         return $this->grupo;
     }
-    
+
     function getId() {
         return $this->id;
     }
@@ -43,15 +43,15 @@ class GrupoUsuario extends Crud {
         return false;
     }
 
-    public function montaSelectGrupo($id = '') {       
-        $combo = "<select name=\"idgrupo\" class='form-control'>\n";
+    public function montaSelectGrupo($id = '', $readonly = '') {
+        $combo = "<select name=\"idgrupo\" class='form-control'$readonly>\n";
         $combo .= "<option></option>\n";
         foreach (self::selecionarTudo() as $key => $value ) {
             (($value->id == $id) ? $select = " selected" : $select = "");
             $combo .= "<option value='". $value->id ."'$select>".$value->grupo."</option>\n";
         }
         $combo .= "</select>\n";
-        return $combo;        
+        return $combo;
     }
 
 }

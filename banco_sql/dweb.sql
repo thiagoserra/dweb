@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.6.0
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Tempo de geração: 28/04/2016 às 23:18
--- Versão do servidor: 5.6.24
--- Versão do PHP: 5.6.8
+-- Host: localhost
+-- Generation Time: 29-Abr-2016 às 00:06
+-- Versão do servidor: 5.7.12-0ubuntu1
+-- PHP Version: 7.0.4-7ubuntu2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `dweb`
+-- Database: `dweb`
 --
 CREATE DATABASE IF NOT EXISTS `dweb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `dweb`;
@@ -25,17 +25,17 @@ USE `dweb`;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `gruposusuario`
+-- Estrutura da tabela `gruposusuario`
 --
 
 DROP TABLE IF EXISTS `gruposusuario`;
-CREATE TABLE IF NOT EXISTS `gruposusuario` (
+CREATE TABLE `gruposusuario` (
   `id` int(11) NOT NULL,
   `grupo` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `gruposusuario`
+-- Extraindo dados da tabela `gruposusuario`
 --
 
 INSERT INTO `gruposusuario` (`id`, `grupo`) VALUES
@@ -45,56 +45,60 @@ INSERT INTO `gruposusuario` (`id`, `grupo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
+CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `usuario` varchar(20) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `senha` varchar(64) NOT NULL,
   `idgrupo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `senha`, `idgrupo`) VALUES
-(1, 'thiago', '2363eb04bdfe959bc21faa1e7a7f6eaa', 99),
-(2, 'novo', 'ba6fdc6b1f68a11e7e29feff661ae5c5', 98),
-(3, 'novo2', '2ebb3c23ac31268cf08bace1875ec6e6', 99);
+INSERT INTO `usuarios` (`id`, `usuario`, `nome`, `email`, `senha`, `idgrupo`) VALUES
+(1, 'thiago', 'Thiago Serra F Carvalho', 'thiagonce@gmail.com', '799c551e9223526b008c77bd7ed22f92', 99),
+(6, 'teste', 'TESTE', 'teste@teste', '2363eb04bdfe959bc21faa1e7a7f6eaa', 98),
+(7, 'anderson', 'Anderson', 'anderson@anderson', '0c73da4ba61fa80de536f333c9fcaca9', 99);
 
 --
--- Índices de tabelas apagadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `gruposusuario`
+-- Indexes for table `gruposusuario`
 --
 ALTER TABLE `gruposusuario`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `grupo` (`grupo`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `grupo` (`grupo`);
 
 --
--- Índices de tabela `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `usuario` (`usuario`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `gruposusuario`
+-- AUTO_INCREMENT for table `gruposusuario`
 --
 ALTER TABLE `gruposusuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

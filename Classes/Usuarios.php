@@ -19,6 +19,8 @@ class Usuarios extends Crud {
     private $usuario;
     private $senha;
     private $idGrupo;
+    private $nome;
+    private $email;
 
     public function setUsuario($usuario) {
         $this->usuario = $usuario;
@@ -44,24 +46,43 @@ class Usuarios extends Crud {
         return $this->idGrupo;
     }
 
+    public function setNome($nome) {
+        $this->nome = $nome;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
     public function inserir() {
-        $sql = "INSERT INTO $this->tabela (usuario, senha, idgrupo) "
-                . " VALUES (:usuario, :senha, :idgrupo)";
+        $sql = "INSERT INTO $this->tabela (usuario, senha, idgrupo, nome, email) "
+                . " VALUES (:usuario, :senha, :idgrupo, :nome, :email)";
         $stmt = Bd::prepare($sql);
-        $stmt->bindParam(':usuario', $this->getUsuario());
-        $stmt->bindParam(':senha', $this->getSenha());
-        $stmt->bindParam(':idgrupo', $this->getIdGrupo());
+        $stmt->bindParam(':usuario', $this->getUsuario(), PDO::PARAM_STR);
+        $stmt->bindParam(':senha', $this->getSenha(), PDO::PARAM_STR);
+        $stmt->bindParam(':idgrupo', $this->getIdGrupo(), PDO::PARAM_INT);
+        $stmt->bindParam(':nome', $this->getNome(), PDO::PARAM_STR);
+        $stmt->bindParam(':email', $this->getEmail(), PDO::PARAM_STR);
         return $stmt->execute();
     }
 
     public function atualizar($id) {
-        $sql = "UPDATE $this->tabela SET usuario = :usuario, senha = :senha, idgrupo = :idgrupo "
+        $sql = "UPDATE $this->tabela SET senha = :senha, idgrupo = :idgrupo, nome = :nome, email = :email "
                 . " WHERE id = :id";
         $stmt = Bd::prepare($sql);
-        $stmt->bindParam(':usuario', $this->getUsuario());
-        $stmt->bindParam(':senha', $this->getSenha());
-        $stmt->bindParam(':idgrupo', $this->getIdGrupo());
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':senha', $this->getSenha(), PDO::PARAM_STR);
+        $stmt->bindParam(':idgrupo', $this->getIdGrupo(), PDO::PARAM_INT);
+        $stmt->bindParam(':nome', $this->getNome(), PDO::PARAM_STR);
+        $stmt->bindParam(':email', $this->getEmail(), PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
 
@@ -71,4 +92,12 @@ class Usuarios extends Crud {
         $this->setSenha(md5($copia . $salt));
     }
 
+    public function selecionarUsuario(){
+        $sql = "SELECT * FROM $this->tabela WHERE usuario = :usuario AND senha = :senha";
+        $stmt = Bd::prepare($sql);
+        $stmt->bindParam(':usuario', $this->getUsuario(), PDO::PARAM_STR);
+        $stmt->bindParam(':senha', $this->getSenha(), PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }

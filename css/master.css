@@ -3,9 +3,16 @@ body {
 }
 
 form {
+  align-content: center;
   padding-bottom: 20px;
 }
 
-#tituloPagina {
+.tituloPagina {
   padding-bottom: 20px;
+}
+
+.indexTexto {
+  font-size: 8px;
+  font-style: italic;
+  padding-left: 20%;
 }

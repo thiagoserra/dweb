@@ -8,9 +8,16 @@ Dúvidas sobre o código poderam ser tiradas em sala.
 
 Por favor, ao postar melhorias, sempre incluir comentário.
 
+ATENÇÃO:
+  * O propósito deste trabalho é acadêmico;
+  * Estamos desenvolvendo em sala um sistema básico, sem caráter comercial;
+  * Este sistema pode ser copiado e utilizado desde que se aplique a licença que o rege.
+
+
 Att.,
 
 Thiago Serra
+Esp. Gerenciamento de Projetos (FGV)
 
 
 Informações aos alunos
