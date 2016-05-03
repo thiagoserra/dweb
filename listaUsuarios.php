@@ -96,7 +96,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
         <div class="form-group">
             <label for="idgrupo">Grupo:</label>
             <?php
-            $grupoSelect = new GrupoUsuario();
+            $grupoSelect = new GruposUsuarios();
             echo $grupoSelect->montaSelectGrupo($resultado->idgrupo, "readonly");
             ?>
         </div>
@@ -133,7 +133,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
       <div class="form-group">
           <label for="idgrupo">Grupo:</label>
           <?php
-          $grupoSelect = new GrupoUsuario();
+          $grupoSelect = new GruposUsuarios();
           echo $grupoSelect->montaSelectGrupo();
           ?>
       </div>

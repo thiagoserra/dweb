@@ -13,7 +13,7 @@ require_once 'Crud.php';
  *  Implementacao da classe GrupoUsuario
  *  @see Crud
  */
-class GrupoUsuario extends Crud {
+class GruposUsuarios extends Crud {
 
     protected $tabela = 'gruposusuario';
     private $grupo;
