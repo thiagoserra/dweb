@@ -8,6 +8,6 @@
 * @version 1.0
 *
 */
-if (session_id() != $_SESSION['idSessao'] || ! isset($_SESSION['usuario'])) {
+if (session_id() != $_SESSION['idSessao'] && ! isset($_SESSION['usuario'])) {
     header("Location: erro.php?err=102");
 }

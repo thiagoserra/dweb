@@ -11,7 +11,7 @@ function __autoload($class_name) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title><?php echo $tituloPagina;?></title>
+        <title><?php echo SIS_NAME. " v. ". SIS_VERSION." - ".$tituloPagina;?></title>
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css" />
         <link rel="stylesheet" href="css/master.css"/>
@@ -29,7 +29,7 @@ function __autoload($class_name) {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">SEU SISTEMA</a>
+                        <a class="navbar-brand" href="#"><?php echo SIS_NAME ?></a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
@@ -41,7 +41,14 @@ function __autoload($class_name) {
                                     <li><a href="#">Opção 2</a></li>
                                     <li><a href="#">Opção 3</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="listaUsuarios.php">Gerenciar Usuários</a></li>
+                                    <?php
+                                      if($_SESSION["idGrupo"] == 98) {
+                                          echo "<li><a href=\"listaUsuarios.php\">Troca Senha</a></li>";
+                                      } else {
+                                          echo "<li><a href=\"listaUsuarios.php\">Gerenciar Usuários</a></li>";
+                                      }
+                                    ?>
+
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#">Opção 5</a></li>
                                 </ul>

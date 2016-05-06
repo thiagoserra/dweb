@@ -73,32 +73,61 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 ?>
 
     <form method="post" action="" class="form-horizontal">
-        <div class="form-group">
-            <label for="user">Usuário:</label>
-            <input type="text" name="user" value="<?php echo $resultado->usuario; ?>"class="form-control" readonly/>
-        </div>
+
 
         <div class="form-group">
+          <div class="col-md-1">
             <label for="nome">Nome:</label>
+          </div>
+          <div class="col-md-6">
             <input type="text" name="nome" value="<?php echo $resultado->nome; ?>" class="form-control" required>
+          </div>
         </div>
 
         <div class="form-group">
+          <div class="col-md-1">
             <label for="email">E-mail:</label>
+          </div>
+
+          <div class="col-md-6">
             <input type="text" name="email" value="<?php echo $resultado->email; ?>" class="form-control" required/>
-        </div>
+          </div>
+      </div>
 
+      <div class="form-group">
+        <div class="col-md-1">
+          <label for="user">Usuário:</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" name="user" value="<?php echo $resultado->usuario; ?>"class="form-control" readonly/>
+          </div>
+      </div>
+      
         <div class="form-group">
+          <div class="col-md-1">
             <label for="senha">Senha:</label>
+          </div>
+
+          <div class="col-md-4">
             <input type="password" name="senha" value="" placeholder="Senha:" class="form-control" required/>
+          </div>
         </div>
 
         <div class="form-group">
-            <label for="idgrupo">Grupo:</label>
+            <div class="col-md-1">
+              <label for="idgrupo">Grupo:</label>
+            </div>
+            <div class="col-md-4">
             <?php
             $grupoSelect = new GrupoUsuario();
-            echo $grupoSelect->montaSelectGrupo($resultado->idgrupo, "readonly");
+            if($_SESSION["idGrupo"] == 98) {
+              echo $grupoSelect->montaSelectGrupo($resultado->idgrupo, "disabled");
+            }	else {
+              echo $grupoSelect->montaSelectGrupo($resultado->idgrupo, "");
+            }
+
             ?>
+          </div>
         </div>
 
         <input type="hidden" name="id" value="<?php echo $resultado->id; ?>">
@@ -110,32 +139,57 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
 ?>
 
   <form method="post" action="" class="form-horizontal">
+
       <div class="form-group">
-          <label for="user">Usuário:</label>
-          <input type="text" name="user" value=""class="form-control" required/>
+          <div class="col-md-1">
+            <label for="nome">Nome:</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" name="nome" value="" class="form-control" required>
+          </div>
       </div>
 
       <div class="form-group">
-          <label for="nome">Nome:</label>
-          <input type="text" name="nome" value="" class="form-control" required>
-      </div>
-
-      <div class="form-group">
+        <div class="col-md-1">
           <label for="email">E-mail:</label>
+        </div>
+
+        <div class="col-md-6">
           <input type="text" name="email" value="" class="form-control" required/>
+        </div>
+
       </div>
 
       <div class="form-group">
+          <div class="col-md-1">
+            <label for="user">Usuário:</label>
+          </div>
+          <div class="col-md-4">
+            <input type="text" name="user" value=""class="form-control" required/>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-1">
           <label for="senha">Senha:</label>
+        </div>
+
+        <div class="col-md-4">
           <input type="password" name="senha" value="" placeholder="Senha:" class="form-control" required/>
+        </div>
       </div>
 
       <div class="form-group">
+        <div class="col-md-1">
           <label for="idgrupo">Grupo:</label>
-          <?php
-          $grupoSelect = new GrupoUsuario();
-          echo $grupoSelect->montaSelectGrupo();
-          ?>
+        </div>
+        <div class="col-md-4">
+
+            <?php
+            $grupoSelect = new GrupoUsuario();
+            echo $grupoSelect->montaSelectGrupo();
+            ?>
+        </div>
       </div>
       <input type="submit" name="cadastrar" class="btn btn-primary" value="Cadastrar dados">
   </form>
@@ -153,6 +207,8 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
             <th>Ações:</th>
         </tr>
     </thead>
+
+
 <?php
       foreach ($usuario->selecionarTudo() as $key => $value) {
 ?>
@@ -161,8 +217,11 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
                 <td><?php echo $value->id; ?></td>
                 <td><?php echo $value->usuario; ?></td>
                 <td>
-                    <?php echo "<a href='?acao=editar&id=" . $value->id . "'>Editar</a>"; ?>
-                    <?php echo "<a href='?acao=deletar&id=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>Deletar</a>"; ?>
+                    <?php echo "<a href='?acao=editar&id=" . $value->id . "'> <span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\" title='Editar'></span></a>"; ?>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <?php echo "<a href='?acao=deletar&id=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\" title='Deletar'></span></a>"; ?>
                 </td>
             </tr>
         </tbody>

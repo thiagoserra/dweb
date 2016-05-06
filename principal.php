@@ -16,6 +16,8 @@ require_once 'topo.php';
 
 echo "Olá, ".$_SESSION['nome']. ", bem vindo(a) ao sistema! ";
 echo "São ".date("H:i")."h, hoje é dia ".date("d-m-Y");
+
+echo "<br>".SIS_NAME . " versão ". SIS_VERSION;
 ?>
 
 

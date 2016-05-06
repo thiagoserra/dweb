@@ -18,3 +18,7 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'dweb');
 define('DB_USER', 'udweb');
 define('DB_PASS', 'XAw3ruZu2C9M5cnB');
+
+
+define("SIS_NAME", "NOME DO SISTEMA");
+define("SIS_VERSION", "1.0");
