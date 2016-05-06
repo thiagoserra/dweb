@@ -102,7 +102,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
             <input type="text" name="user" value="<?php echo $resultado->usuario; ?>"class="form-control" readonly/>
           </div>
       </div>
-      
+
         <div class="form-group">
           <div class="col-md-1">
             <label for="senha">Senha:</label>
@@ -119,7 +119,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
             </div>
             <div class="col-md-4">
             <?php
-            $grupoSelect = new GrupoUsuario();
+            $grupoSelect = new GruposUsuarios();
             if($_SESSION["idGrupo"] == 98) {
               echo $grupoSelect->montaSelectGrupo($resultado->idgrupo, "disabled");
             }	else {
@@ -186,7 +186,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'editar') {
         <div class="col-md-4">
 
             <?php
-            $grupoSelect = new GrupoUsuario();
+            $grupoSelect = new GruposUsuarios();
             echo $grupoSelect->montaSelectGrupo();
             ?>
         </div>
