@@ -21,7 +21,7 @@ if ($_SESSION['idGrupo'] == 98) {
 $usuario = new Usuarios();
 
 //inserindo usuário
-if (isset($_POST['cadastrar']) && $_SESSION['idGrupo'] = 99) {
+if (isset($_POST['cadastrar']) && $_SESSION['idGrupo'] == 99) {
     $user = $_POST['user'];
     $senha = $_POST['senha'];
     $idGrupo = $_POST['idgrupo'];
